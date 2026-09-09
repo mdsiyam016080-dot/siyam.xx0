@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siyam.xx0 | Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-dark">
+    <div class="landing-layer" id="login-layer">
+        <div class="welcome-box">
+            <h2><i class="fa-solid fa-user-shield"></i> এডমিন লগইন</h2>
+            <br>
+            <input type="password" id="admin-pass" placeholder="এডমিন পাসওয়ার্ড দিন...">
+            <button class="btn primary-btn full-width" onclick="loginAdmin()">লগইন করুন</button>
+        </div>
+    </div>
+
+    <div id="admin-dashboard" class="app-layer hidden" style="padding: 40px 8%;">
+        <header class="app-header" style="margin-bottom: 30px;">
+            <h2><i class="fa-solid fa-chart-line"></i> siyam.xx0 কন্ট্রোল প্যানেল</h2>
+            <button class="btn secondary-btn" onclick="location.reload()">লগআউট</button>
+        </header>
+
+        <main class="grid-container">
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-bell"></i> নোটিশ বোর্ড আপডেট</h3>
+                <br>
+                <textarea id="notice-text" placeholder="হোম পেজের জন্য নতুন মেসেজ দিন..."></textarea>
+                <button class="btn primary-btn full-width" onclick="updateNotice()">মেসেজ পাবলিশ করুন</button>
+            </div>
+
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-server"></i> সিস্টেম স্ট্যাটাস</h3>
+                <br>
+                <p><strong>সার্ভার স্ট্যাটাস:</strong> <span style="color: #00ffe1;">অনলাইন (Active)</span></p>
+                <p><strong>এআই ইঞ্জিন:</strong> Pollinations AI (Connected)</p>
+                <p><strong>ডাউনলোডার সার্ভিস:</strong> Cobalt Engine (Active)</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function loginAdmin() {
+            const pass = document.getElementById('admin-pass').value;
+            if(pass === 'siyam123') { // পাসওয়ার্ড siyam123 রাখা হয়েছে
+                document.getElementById('login-layer').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+            } else {
+                alert('ভুল পাসওয়ার্ড!');
+            }
+        }
+
+        function updateNotice() {
+            const msg = document.getElementById('notice-text').value;
+            if(!msg) return alert('মেসেজ লিখুন!');
+            alert('নোটিশ সফলভাবে সাইটে আপডেট করা হয়েছে!');
+        }
+    </script>
+</body>
+              </html>
