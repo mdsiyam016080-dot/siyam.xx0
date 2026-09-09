@@ -10,7 +10,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 1. Real AI Image Generator Endpoint (Pollinations API)
+// Secure Admin Route
+app.post('/api/admin/login', (req, res) => {
+    const { password } = req.body;
+    const adminPass = process.env.ADMIN_PASSWORD || 'siyam123';
+    
+    if (password === adminPass) {
+        res.json({ success: true, token: 'siyam-secure-admin-token' });
+    } else {
+        res.status(401).json({ success: false, error: 'Unauthorized Access' });
+    }
+});
+
+// AI Image Endpoint
 app.post('/api/generate-image', (req, res) => {
     const { prompt } = req.body;
     if (!prompt) return res.status(400).json({ error: 'Prompt is required' });
@@ -21,7 +33,7 @@ app.post('/api/generate-image', (req, res) => {
     res.json({ success: true, imageUrl });
 });
 
-// 2. Real Universal Video Downloader Endpoint
+// Universal Video Downloader Endpoint
 app.post('/api/download-video', async (req, res) => {
     const { url } = req.body;
     if (!url) return res.status(400).json({ error: 'URL is required' });
@@ -45,10 +57,11 @@ app.post('/api/download-video', async (req, res) => {
     }
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Serve 404 for unknown routes
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+    console.log(`Server running securely on port ${PORT}`);
 });
