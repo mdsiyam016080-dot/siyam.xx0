@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siyam.xx0 | Official Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+
+    <!-- 1. LANDING WELCOME PAGE -->
+    <section id="welcome-screen" class="landing-layer">
+        <div class="welcome-box">
+            <div class="profile-glow-ring">
+                <!-- আপনার ছবিটি profile.jpg নামে public ফোল্ডারে রাখুন -->
+                <img src="profile.jpg" alt="siyam.xx0" class="user-avatar" onerror="this.src='https://via.placeholder.com/150/00f2fe/ffffff?text=siyam.xx0'">
+            </div>
+            <h1 class="welcome-heading animated-glow">স্বাগতম siyam.xx0</h1>
+            <p class="welcome-sub">একটি প্রফেশনাল অল-ইন-ওয়ান এআই ও মিডিয়া প্ল্যাটফর্ম</p>
+            
+            <button id="enter-btn" class="glow-button touch-sound-trigger">
+                <span>কন্টিনিউ করুন</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- 2. MAIN WEBSITE APP INTERFACE -->
+    <div id="app-screen" class="app-layer hidden">
+        
+        <!-- Header Nav -->
+        <header class="app-header">
+            <div class="brand-title">
+                <i class="fa-solid fa-bolt brand-icon"></i>
+                <h2>siyam.xx0</h2>
+            </div>
+            <div class="nav-controls">
+                <button id="theme-switcher" class="icon-btn touch-sound-trigger" title="কালার/থিম চেঞ্জ করুন">
+                    <i class="fa-solid fa-palette"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dynamic Universal Search Bar -->
+        <section class="search-banner">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="main-search" class="touch-sound-trigger" placeholder="ইউটিউব ভিডিও, মিডিয়া বা যেকোনো ফাইল সার্চ করুন...">
+                <button class="search-btn touch-sound-trigger"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </section>
+
+        <!-- Feature Grid (ডিজিটাল ঘরসমূহ) -->
+        <main class="grid-container">
+
+            <!-- Grid 1: AI Chat & Image Generator -->
+            <div class="dashboard-card touch-sound-trigger">
+                <div class="card-head">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3>এআই চ্যাট ও ইমেজ জেনারেটর</h3>
+                </div>
+                <div class="card-content">
+                    <div class="usage-guide">
+                        <strong>ব্যবহার নিয়ম:</strong> কিভাবে ইউজ করতে হয়: নিচে প্রম্পট লিখুন (যেমন: "A futuristic cyberpunk city") এবং বাটনে প্রেস করুন।
+                    </div>
+                    <textarea id="ai-input" placeholder="এখানে আপনার প্রম্পট বা প্রশ্ন লিখুন..."></textarea>
+                    <div class="card-btn-group">
+                        <button class="btn primary-btn touch-sound-trigger" onclick="handleAiImage()"><i class="fa-solid fa-wand-magic-sparkles"></i> পিক বানান</button>
+                        <button class="btn secondary-btn touch-sound-trigger" onclick="handleAiChat()"><i class="fa-solid fa-paper-plane"></i> চ্যাট করুন</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid 2: Video Downloader -->
+            <div class="dashboard-card touch-sound-trigger">
+                <div class="card-head">
+                    <i class="fa-solid fa-download"></i>
+                    <h3>সোশ্যাল মিডিয়া ভিডিও ডাউনলোডার</h3>
+                </div>
+                <div class="card-content">
+                    <div class="usage-guide">
+                        <strong>ব্যবহার নিয়ম:</strong> Facebook, TikTok, Instagram বা YouTube থেকে ভিডিও লিংক কপি করে নিচে বসিয়ে ডাউনলোডে চাপ দিন।
+                    </div>
+                    <input type="url" id="downloader-url" placeholder="ভিডিও লিংক পেস্ট করুন...">
+                    <button class="btn primary-btn full-width touch-sound-trigger" onclick="handleVideoDownload()">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> ডাইরেক্ট ডাউনলোড
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid 3: Youtube & Media Search -->
+            <div class="dashboard-card touch-sound-trigger">
+                <div class="card-head">
+                    <i class="fa-brands fa-youtube"></i>
+                    <h3>ইউটিউব ও ভিডিও মিডিয়া সার্চ</h3>
+                </div>
+                <div class="card-content">
+                    <div class="usage-guide">
+                        <strong>ব্যবহার নিয়ম:</strong> পছন্দের গান, নাটক বা ভিডিওর নাম লিখে সার্চ দিন এবং সরাসরি প্লে করে দেখুন।
+                    </div>
+                    <input type="text" id="media-query" placeholder="গান বা ভিডিওর নাম লিখুন...">
+                    <button class="btn primary-btn full-width touch-sound-trigger" onclick="handleMediaSearch()">
+                        <i class="fa-solid fa-play"></i> সার্চ ও প্লে
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid 4: Pro Utility Tools -->
+            <div class="dashboard-card touch-sound-trigger">
+                <div class="card-head">
+                    <i class="fa-solid fa-toolbox"></i>
+                    <h3>প্রফেশনাল ইউটিলিটি টুলস</h3>
+                </div>
+                <div class="card-content">
+                    <div class="usage-guide">
+                        <strong>ব্যবহার নিয়ম:</strong> এক ক্লিকেই প্রয়োজনীয় অন্যান্য টুলস ফ্রিতে ব্যবহার করুন।
+                    </div>
+                    <div class="chip-container">
+                        <button class="chip touch-sound-trigger"><i class="fa-solid fa-font"></i> ফন্ট স্টাইল</button>
+                        <button class="chip touch-sound-trigger"><i class="fa-solid fa-image"></i> ব্যাকগ্রাউন্ড রিমুভার</button>
+                        <button class="chip touch-sound-trigger"><i class="fa-solid fa-qrcode"></i> QR মেকার</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>© 2026 <strong>siyam.xx0</strong> | Powered by Advanced AI & Sound Integration</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
