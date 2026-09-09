@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siyam.xx0 - All in One Web Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 1. Landing Screen (WELCOME PAGE) -->
+    <div id="landing-screen" class="landing-container">
+        <div class="welcome-card">
+            <div class="profile-frame">
+                <!-- আপনার দেওয়া ছবিটির নাম 3ae20e3c266c27b525495af07c40785b.jpg সেট করা আছে -->
+                <img src="3ae20e3c266c27b525495af07c40785b.jpg" alt="Siyam Profile" class="profile-img">
+            </div>
+            <h1 class="welcome-title animated-text">স্বাগতম siyam.xx0 এ!</h1>
+            <p class="subtitle">আপনার অল-ইন-ওয়ান ডিজিটাল প্ল্যাটফর্ম</p>
+            <button id="enter-btn" class="glow-btn interactive-sound">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> কন্টিনিউ করুন
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Main Website Interface -->
+    <div id="main-content" class="main-container hidden">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <h2>siyam.xx0</h2>
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-btn" class="icon-btn interactive-sound" title="থিম পরিবর্তন করুন">
+                    <i class="fa-solid fa-palette"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Bar with Lighting & Sound -->
+        <section class="search-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="global-search" class="interactive-sound" placeholder="ইউটিউব বা যেকোনো মিডিয়া সার্চ করুন...">
+                <button id="search-btn" class="interactive-sound"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </section>
+
+        <!-- Feature Grid (গড় / কার্ডসমূহ) -->
+        <main class="dashboard-grid">
+
+            <!-- Card 1: AI Chat & Image Generator -->
+            <div class="card feature-card interactive-sound">
+                <div class="card-header">
+                    <i class="fa-solid fa-robot card-icon"></i>
+                    <h3>এআই চ্যাট ও ইমেজ জেনারেটর</h3>
+                </div>
+                <div class="card-body">
+                    <p class="instruction"><strong>ব্যবহার পদ্ধতি:</strong> প্রম্পট বা কমান্ড লিখে ছবি তৈরি করুন কিংবা এআই-এর সাথে বাংলায় চ্যাট করুন।</p>
+                    <textarea id="ai-prompt" placeholder="যেমন: 'একটি সুন্দর সূর্যাস্তের ছবি বানাও'"></textarea>
+                    <div class="btn-group">
+                        <button class="action-btn interactive-sound" onclick="generateImage()"><i class="fa-solid fa-wand-magic-sparkles"></i> ইমেজ জেনারেট</button>
+                        <button class="action-btn secondary interactive-sound" onclick="aiChat()"><i class="fa-solid fa-paper-plane"></i> মেসেজ পাঠান</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Social Media Video Downloader -->
+            <div class="card feature-card interactive-sound">
+                <div class="card-header">
+                    <i class="fa-solid fa-download card-icon"></i>
+                    <h3>সোশ্যাল মিডিয়া ভিডিও ডাউনলোডার</h3>
+                </div>
+                <div class="card-body">
+                    <p class="instruction"><strong>ব্যবহার পদ্ধতি:</strong> Facebook, TikTok, Instagram বা YouTube ভিডিওর লিংক নিচে পেস্ট করে ডাউনলোড বাটনে চাপ দিন।</p>
+                    <input type="url" id="video-url" placeholder="ভিডিও লিংক পেস্ট করুন...">
+                    <button class="action-btn interactive-sound" onclick="downloadVideo()"><i class="fa-solid fa-circle-down"></i> ভিডিও ডাউনলোড করুন</button>
+                </div>
+            </div>
+
+            <!-- Card 3: Media Search & Player -->
+            <div class="card feature-card interactive-sound">
+                <div class="card-header">
+                    <i class="fa-brands fa-youtube card-icon"></i>
+                    <h3>মিডিয়া সার্চ ও প্লেয়ার</h3>
+                </div>
+                <div class="card-body">
+                    <p class="instruction"><strong>ব্যবহার পদ্ধতি:</strong> গান বা ভিডিওর নাম লিখে সার্চ দিয়ে এখানেই সরাসরি প্লে করুন।</p>
+                    <input type="text" id="media-search-input" placeholder="গান বা ভিডিওর নাম লিখুন...">
+                    <button class="action-btn interactive-sound" onclick="searchMedia()"><i class="fa-solid fa-play"></i> প্লে করুন</button>
+                </div>
+            </div>
+
+            <!-- Card 4: Extra Utility Tools (Pro Additions) -->
+            <div class="card feature-card interactive-sound">
+                <div class="card-header">
+                    <i class="fa-solid fa-sliders card-icon"></i>
+                    <h3>স্মার্ট ইউটিলিটি টুলস</h3>
+                </div>
+                <div class="card-body">
+                    <p class="instruction"><strong>ব্যবহার পদ্ধতি:</strong> দ্রুত ফাইল কনভার্ট, টেক্সট স্টাইল কিংবা ব্যাকগ্রাউন্ড রিমুভ এর কাজ সম্পন্ন করুন।</p>
+                    <div class="utility-buttons">
+                        <button class="chip-btn interactive-sound"><i class="fa-solid fa-font"></i> ফন্ট স্টাইলার</button>
+                        <button class="chip-btn interactive-sound"><i class="fa-solid fa-image"></i> বিজি রিমুভার</button>
+                        <button class="chip-btn interactive-sound"><i class="fa-solid fa-qrcode"></i> QR কোড জেনারেটর</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 <strong>siyam.xx0</strong> - সর্বস্বত্ব সংরক্ষিত।</p>
+        </footer>
+    </div>
+
+    <!-- Web Audio API and JavaScript Source -->
+    <script src="script.js"></script>
+</body>
+</html>
